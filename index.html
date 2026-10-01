@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petualangan Pecahan di Warung Kue Pak Rico</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#CDEBFF;--card:#fff;--ink:#1E2A4A;--sun:#FFC533;--tom:#FF6B57;--leaf:#1F9D5B;--grape:#6C4CF0;--cell:#FFF0D2;--line:#1E2A4A;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14203D;--card:#22315A;--ink:#F4F7FF;--cell:#3B4A7A;--line:#F4F7FF}}
+:root[data-theme="dark"]{--bg:#14203D;--card:#22315A;--ink:#F4F7FF;--cell:#3B4A7A;--line:#F4F7FF}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Fredoka","Trebuchet MS","Comic Sans MS",sans-serif;font-size:1.3rem;line-height:1.5}
+#app{max-width:1100px;margin:0 auto;padding:16px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+h1{font-size:1.8rem;margin:0}h2{font-size:1.6rem;margin:8px 0}h3{margin:16px 0 4px}
+main{background:var(--card);border-radius:28px;padding:20px;border:4px solid var(--ink)}
+.btn{font:inherit;font-weight:600;min-height:58px;padding:8px 22px;border-radius:18px;border:3px solid var(--ink);background:var(--sun);color:#1E2A4A;cursor:pointer;box-shadow:0 5px 0 var(--ink);margin:6px 6px 10px 0}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn:focus-visible{outline:4px solid var(--grape);outline-offset:3px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.alt{background:#fff}.chip{background:#fff;min-width:96px}
+.sel{background:#DDD3FF}.good{background:#BDF2D3!important;animation:pop .35s}.bad{background:#FFD3CC!important}
+@keyframes pop{50%{transform:scale(1.08)}}
+@media (prefers-reduced-motion:reduce){.good{animation:none}}
+.say{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.say p{margin:0;background:#FFF6D6;color:#1E2A4A;border:3px solid var(--ink);border-radius:20px;padding:10px 16px;flex:1}
+.cat{width:88px;height:88px;flex:none}
+.bar{display:grid;gap:3px;height:70px;border:4px solid var(--line);border-radius:14px;overflow:hidden;background:var(--line);margin:10px 0}
+.bar i{background:var(--cell);display:block}.bar i.on{background:var(--tom)}.bar.p i.on{background:var(--grape)}
+.fr{display:inline-grid;text-align:center;vertical-align:middle;line-height:1.1;margin:0 4px;font-weight:700}
+.fr b:first-child{border-bottom:3px solid currentColor;padding:0 6px}
+.big{font-size:1.5rem;font-weight:600}.big span{font-size:1.1rem;font-weight:400}
+.row{display:flex;flex-wrap:wrap}.col{display:grid;gap:4px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid4{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.pic{background:#fff;border:3px solid var(--ink);border-radius:18px;padding:4px 12px;cursor:pointer;font:inherit}
+.fb{padding:8px 14px;border-radius:14px;margin:6px 0}.fb.g{background:#D8F7E5;color:#0E3B23}.fb.b{background:#FFE3DE;color:#5A1A10}
+.nav{display:flex;justify-content:space-between;margin-top:14px}
+.map{display:grid;gap:8px;margin-bottom:10px}.pos{font-size:1.6rem;text-align:left;min-height:76px}
+.card2{font-size:1.6rem;min-height:110px}
+.kartu{border:4px dashed var(--grape);border-radius:20px;padding:12px 18px;margin-top:12px;background:#F4F0FF;color:#1E2A4A}
+.meter{margin:10px 0}.mbar{height:18px;border:3px solid var(--ink);border-radius:10px;overflow:hidden}.mbar i{display:block;height:100%;background:var(--leaf)}
+.stars{font-size:3rem;margin:0}
+details{margin-top:14px;font-size:1rem;background:rgba(127,127,127,.12);padding:8px 14px;border-radius:12px}
+@media (max-width:640px){.two,.grid4{grid-template-columns:1fr}h1{font-size:1.3rem}body{font-size:1.1rem}}
+:root{--bgi:linear-gradient(180deg,#7FD3FF 0%,#FFE9A8 100%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bgi:none}}
+:root[data-theme="dark"]{--bgi:none}
+body{background-color:var(--bg);background-image:radial-gradient(circle at 24px 24px,rgba(255,255,255,.5) 5px,transparent 6px),var(--bgi);background-size:56px 56px,auto;background-attachment:fixed}
+#app::before{content:"";display:block;height:44px;margin:-16px -16px 6px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='44'%3E%3Cpath d='M0 4H160' stroke='%231E2A4A' stroke-width='3'/%3E%3Cpath d='M8 4L32 4L20 38Z' fill='%23FF6B57'/%3E%3Cpath d='M48 4L72 4L60 40Z' fill='%23FFC533'/%3E%3Cpath d='M88 4L112 4L100 40Z' fill='%233DBE7A'/%3E%3Cpath d='M128 4L152 4L140 36Z' fill='%236C4CF0'/%3E%3C/svg%3E") repeat-x}
+header{background:linear-gradient(90deg,#FF6B57,#FFA53D,#2DB56A,#6C4CF0);padding:8px 18px;border-radius:26px;border:4px solid var(--ink);box-shadow:0 6px 0 var(--ink);position:relative;z-index:1}
+h1{color:#fff;text-shadow:2px 2px 0 var(--ink)}
+header .btn{min-height:46px;font-size:1rem;padding:2px 14px;margin:3px}
+h2{display:inline-block;background:var(--sun);color:#1E2A4A;padding:2px 20px;border-radius:999px;border:3px solid var(--ink)}
+main{position:relative;z-index:1;box-shadow:0 8px 0 var(--ink)}
+.bar i{border-radius:4px}.bar i.on{background:linear-gradient(135deg,#FF9A5C,#FF4F6D)}.bar.p i.on{background:linear-gradient(135deg,#9B7BFF,#5A3CE0)}
+:is(.row,.col) .chip:nth-child(4n+1){background:#FFE1E6}:is(.row,.col) .chip:nth-child(4n+2){background:#DFF5E8}:is(.row,.col) .chip:nth-child(4n+3){background:#E1EEFF}:is(.row,.col) .chip:nth-child(4n){background:#FFF1C9}
+:is(.row,.col) .btn.sel{background:#C9BBFF;transform:scale(1.06)}
+.pos:nth-child(1){background:#FF9AA2}.pos:nth-child(2){background:#FFD166}.pos:nth-child(3){background:#8DE0B0}.pos:nth-child(4){background:#B9A6FF}
+.cat{animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.deco span{position:fixed;font-size:2.6rem;opacity:.6;pointer-events:none;animation:bob 3s ease-in-out infinite}
+.cf span{position:fixed;top:-40px;font-size:2rem;pointer-events:none;z-index:9;animation:fall 1.4s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.cat,.deco span{animation:none}}
+.arena{display:grid;grid-template-columns:1fr 1.2fr 1fr;gap:14px;align-items:start}
+.team{border:4px solid var(--ink);border-radius:22px;padding:10px;text-align:center;color:#1E2A4A}
+.tA{background:#D8ECFF}.tB{background:#FFE3C7}
+.team h3{margin:0}.score{font-size:2.8rem;font-weight:700;line-height:1.1}
+.team .btn{width:100%;font-size:1.6rem;min-height:72px;margin-right:0}
+.mid{text-align:center}.btn.good:disabled{opacity:1}
+@media (max-width:900px){.arena{grid-template-columns:1fr}.mid{order:-1}}
+.lane{margin:6px 0}.track{display:grid;grid-template-columns:repeat(11,1fr);gap:3px}
+.track i{font-style:normal;text-align:center;font-size:1.7rem;min-height:54px;line-height:54px;background:var(--cell);border:2px solid var(--ink);border-radius:8px}
+.track i.fin{background:#FFE08A}
+body{-webkit-user-select:none;user-select:none;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.bar.tall{height:auto}.bar.tall i{min-height:4rem}
+@media (min-width:641px){
+html{font-size:clamp(15px,1.15vw,44px)}
+body{font-size:1.25rem}
+#app{max-width:none;padding:1rem 2vw}
+#app::before{margin:-1rem -2vw .4rem}
+h1{font-size:2.2rem}h2{font-size:1.9rem}
+.btn{min-height:3.6rem;padding:.5rem 1.4rem;border-radius:1.1rem}
+header .btn{min-height:3rem;font-size:1.05rem}
+.team .btn{min-height:5.5rem;font-size:1.7rem}
+.bar{height:5rem}.bar.tall{height:auto}
+.cat{width:6rem;height:6rem}
+.track i{min-height:3.6rem;line-height:3.6rem;font-size:2.2rem}
+.score{font-size:3.2rem}
+}
+#vid{position:fixed;inset:0;background:rgba(10,20,50,.88);z-index:20;display:flex;align-items:center;justify-content:center}
+#vid[hidden]{display:none}
+.vbox{background:var(--card);color:var(--ink);border:4px solid var(--ink);border-radius:28px;width:min(1300px,96vw);max-height:96vh;overflow:auto;padding:1rem 1.4rem}
+.vtop{display:flex;justify-content:space-between;align-items:center}.vtop b{font-size:1.5rem}
+.vstage{--cell:#FFF0D2;--line:#1E2A4A;min-height:30vh;background:#FFF9E6;color:#1E2A4A;border:3px solid var(--ink);border-radius:20px;padding:1rem;display:grid;align-content:center;gap:.4rem;margin:.6rem 0}
+.vbig{font-size:2rem;font-weight:600;text-align:center}.vsm{text-align:center;font-size:1.3rem;margin:0}
+.vpg{height:14px;border:3px solid var(--ink);border-radius:10px;overflow:hidden;margin:10px 0}.vpg i{display:block;height:100%;background:var(--grape);width:0}
+.pos:nth-child(5){background:#FFB3E6}
+.say .spk{min-height:3rem;min-width:3rem;padding:0 .6rem;margin:0 0 4px .4rem;font-size:1.4rem;flex:none}
+</style></head>
+<body><div id="app"></div><div id="vid" hidden></div>
+<script>
+const $=s=>document.querySelector(s),S={};
+const A={m:1,s:1,v:1};let ctx,mt=0,step=0,nextT=0;
+function ac(){if(!ctx){try{ctx=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}}if(ctx&&ctx.state=='suspended')ctx.resume();return ctx}
+function tone(f,t,d,ty='sine',v=.15,f2){if(!ctx)return;const o=ctx.createOscillator(),g=ctx.createGain();o.type=ty;o.frequency.setValueAtTime(f,t);if(f2)o.frequency.linearRampToValueAtTime(f2,t+d);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(ctx.destination);o.start(t);o.stop(t+d+.05)}
+const mf=m=>440*2**((m-69)/12),MEL=[72,76,79,76,72,76,79,84,83,79,76,79,83,79,76,72,74,77,81,77,74,77,81,86,84,79,76,79,72,0,72,0],BAS=[48,55,53,55,48,55,53,55];
+function sched(){if(!A.m||!ctx)return;while(nextT<ctx.currentTime+.4){const n=MEL[step%32];if(n)tone(mf(n),nextT,.22,'triangle',.05);if(step%4==0)tone(mf(BAS[(step/4)%8]),nextT,.5,'sine',.06);nextT+=.22;step++}}
+function startM(){if(!ac()||mt)return;nextT=ctx.currentTime+.05;mt=setInterval(sched,120)}
+function stopM(){clearInterval(mt);mt=0}
+function sfx(k){if(!A.s||!ac())return;const t=ctx.currentTime;if(k=='tap')tone(700,t,.06,'square',.05);else if(k=='ok')[523,659,784,1047].forEach((f,i)=>tone(f,t+i*.09,.18,'triangle',.14));else if(k=='no')tone(240,t,.3,'sawtooth',.1,130);else if(k=='win')[523,659,784,659,784,1047,1319].forEach((f,i)=>tone(f,t+i*.11,.25,'triangle',.14));else tone(400,t,.14,'sine',.1,750)}
+function tgM(){A.m=!A.m;if(A.m)startM();else stopM();render()}
+function tgS(){A.s=!A.s;render()}
+document.addEventListener('click',()=>{ac();if(A.m&&!mt&&!Z.open)startM()});document.addEventListener('pointerdown',e=>{if(ctx&&ctx.state=='running'&&e.target.closest('.btn,.pic,.bar i'))sfx('tap')});
+function confetti(){if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;const d=document.createElement('div');d.className='cf';for(let i=0;i<18;i++){const s=document.createElement('span');s.textContent=['🎉','⭐','🍬','✨','🎈'][i%5];s.style.cssText=`left:${Math.random()*100}vw;animation-delay:${Math.random()*.3}s`;d.appendChild(s)}document.body.appendChild(d);setTimeout(()=>d.remove(),1800)}
+let LK,LT,LG=0,LB=0,LW=0;
+function fx(){const p=$('.say p'),tx=p?p.textContent:'',G=document.querySelectorAll('.fb.g').length,B=document.querySelectorAll('.fb.b').length,W=S.k?S.k.w:0,k=[S.scr,S.st,S.qi,S.g,S.k&&S.k.r].join();
+if(S.nf)S.nf=0;else if(k!=LK){if(S.scr=='result')sfx('win');else if(LK)sfx('nav')}else if(tx!=LT&&/^[✅❌🎉]/u.test(tx)){if(tx.startsWith('❌'))sfx('no');else{sfx(tx.startsWith('🎉')?'win':'ok');confetti()}}else if(G>LG){sfx('ok');confetti()}else if(W>LW||B>LB)sfx('no');
+LK=k;LT=tx;LG=G;LB=B;LW=W}
+function reset(){Object.assign(S,{scr:'home',st:0,ok:{learn:0,play:0,quiz:0},guess:null,seen:{},t:{},g:null,qi:0,qa:[],pd:{k:0,t:0}})}reset();
+const fr=(a,b)=>`<span class=fr><b>${a}</b><b>${b}</b></span>`;
+const bar=(n,k,o={})=>`<div class="bar${o.p?' p':''}${o.tap&&n>9?' tall':''}" style="grid-template-columns:${o.w||'repeat('+(o.tap&&n>9?Math.ceil(n/2):n)+',1fr)'}">${Array.from({length:n},(_,i)=>`<i class="${(o.sel?o.sel.includes(i):i<k)?'on':''}" ${o.tap?`onpointerdown="${o.tap}(${i})"`:''}></i>`).join('')}</div>`;
+const cat=`<svg class=cat viewBox="0 0 100 100" aria-hidden="true"><path d="M14 100Q14 74 50 74Q86 74 86 100Z" fill="#FF6B57"/><path d="M40 74L50 86L60 74Z" fill="#fff"/><circle cx="26" cy="54" r="5" fill="#F2C29B"/><circle cx="74" cy="54" r="5" fill="#F2C29B"/><circle cx="50" cy="52" r="24" fill="#F2C29B"/><circle cx="34" cy="22" r="11" fill="#fff" stroke="#1E2A4A" stroke-width="2"/><circle cx="50" cy="16" r="13" fill="#fff" stroke="#1E2A4A" stroke-width="2"/><circle cx="66" cy="22" r="11" fill="#fff" stroke="#1E2A4A" stroke-width="2"/><rect x="30" y="24" width="40" height="12" rx="3" fill="#fff" stroke="#1E2A4A" stroke-width="2"/><rect x="32" y="26" width="36" height="8" fill="#fff"/><circle cx="41" cy="50" r="3.5" fill="#1E2A4A"/><circle cx="59" cy="50" r="3.5" fill="#1E2A4A"/><path d="M36 60Q50 56 64 60Q58 66 50 62Q42 66 36 60Z" fill="#5A3A22"/><path d="M42 68Q50 75 58 68" stroke="#1E2A4A" stroke-width="3" fill="none" stroke-linecap="round"/></svg>`;
+let LS='';const say=t=>{LS=t;return `<div class=say>${cat}<p>${t}</p>${t&&hasId()?`<button class="btn spk" aria-label="Dengarkan Pak Rico" data-t="${encodeURIComponent(t)}" onclick="spk(this)">🔊</button>`:''}</div>`};
+const go=(s,i=0)=>{S.scr=s;S.st=i;S.t={};if(s=='play')S.g=null;render();scrollTo(0,0)};
+const pick=(k,i,a)=>{S.t[k]=i;S.nf=1;render();if(a!==undefined){const f=document.querySelector('.fb[data-k="'+k+'"]');if(f)vsay(f.textContent);if(i==a){sfx('ok');confetti()}else sfx('no')}};
+function opts(k,l,a,h){const c=S.t[k];return `<div class=row>${l.map((t,i)=>`<button class="btn chip ${c==i?(i==a?'good':'bad'):''}" onclick="pick('${k}',${i},${a})">${t}</button>`).join('')}</div>`+(c==null?'':`<p class="fb ${c==a?'g':'b'}" data-k="${k}">${c==a?'✅ Benar! '+h[1]:'❌ Belum tepat. '+h[0]}</p>`)}
+const TT=['Tahap 0: Ingat-ingat pecahan','Tahap 1: Mengalami masalah','Tahap 2: Menemukan sendiri','Tahap 3: Gambar dan simbol','Tahap 4: Menerapkan pada pita','Tahap 5: Merefleksi','Kartu Kesimpulan'];
+const TN=['Aktivasi konsep dasar sekaligus diagnostik. Amati siswa yang salah pada soal 2: mereka belum memahami syarat bagian sama besar.','Biarkan siswa menebak tanpa dikoreksi. Tanyakan alasan tebakan mereka secara lisan.','Tanya: apa yang sama, apa yang berubah? Minta siswa menyebut jawabannya sebelum membaca layar.','Hubungkan gambar dengan simbol. Bahas miskonsepsi "tambah angka yang sama" dengan gambar.','Ini tahap transfer: konsep yang sama pada bentuk pita. Minta siswa menjelaskan langkahnya.','Refleksi: bandingkan tebakan awal dan akhir. Ajak siswa menjelaskan dengan kata sendiri.','Siswa menyusun definisinya sendiri. Kartu dapat dibuka lagi dari peta.'];
+const KART=`<div class=kartu><h3>Kartu Kesimpulan</h3><p class=big>${fr(1,2)} = ${fr(2,4)} = ${fr(3,6)}</p><p>Pecahan adalah bagian dari benda utuh yang dibagi sama besar. Pecahan senilai memiliki nilai yang sama walaupun pembilang dan penyebutnya berbeda. Cara mencarinya: kalikan atau bagi pembilang dan penyebut dengan bilangan yang sama.</p></div>`;
+const L=[
+()=>say('Halo, aku Pak Rico! Ayo ingat lagi: satu martabak dibagi 4 bagian sama besar, lalu diambil 3 bagian.')+bar(4,3)+`<p class=big>${fr(3,4)} <span>pembilang 3 = bagian yang diambil<br>penyebut 4 = seluruh bagian yang sama besar</span></p><h3>Coba dulu ya</h3><p>1. Pecahan apa yang ditunjukkan gambar ini?</p>${bar(6,2)}`+opts('a',['2/6','2/4','4/6'],0,['Hitung dulu bagian seluruhnya, lalu bagian yang diarsir.','2 bagian diarsir dari 6 bagian seluruhnya.'])+`<p>2. Apakah gambar ini menunjukkan 1/3?</p>${bar(3,1,{w:'3fr 1fr 1fr'})}`+opts('b',['Ya','Tidak'],1,['Lihat ukuran tiap bagian.','Bagiannya tidak sama besar, jadi bukan 1/3.']),
+()=>say('Pelanggan memesan 1/2 loyang martabak. Tapi loyang sudah terpotong jadi 4 bagian. Berapa potong yang harus diambil? Tebak dulu!')+bar(4,0)+`<div class=row>${[1,2,3].map(n=>`<button class="btn chip ${S.guess==n?'sel':''}" onclick="S.guess=${n};render()">${n} potong</button>`).join('')}</div>`+(S.guess?'<p class="fb g">Tebakanmu dicatat. Kita buktikan di tahap berikutnya!</p>':''),
+()=>{const n=S.t.n||2;S.seen[n]=1;const s=Object.keys(S.seen).map(Number).sort((a,b)=>a-b);return say('Potong loyangnya! Sentuh angka untuk membagi loyang. Perhatikan bagian yang diarsir.')+`<div class=row>${[2,4,6,8].map(m=>`<button class="btn chip ${n==m?'sel':''}" onclick="S.t.n=${m};render()">${m} potong</button>`).join('')}</div>`+bar(n,n/2)+`<p class=big>${fr(n/2,n)} <span>${n/2} diarsir dari ${n} potong</span></p><p>Yang sudah kamu lihat: ${s.map(m=>fr(m/2,m)).join(' = ')}</p>`+(s.length>=3?`<p class="fb g">Apa yang sama? Luas yang diarsir tetap setengah. Apa yang berubah? Jumlah potongannya. Pecahan seperti ini disebut <b>pecahan senilai</b>.</p>`:'<p>Coba semua angka ya!</p>')},
+()=>{const m=S.t.m||2;return say('Sekarang kita tulis dengan simbol. Pilih pengali, lihat apa yang terjadi pada gambar.')+`<div class=row>${[2,3,4].map(x=>`<button class="btn chip ${m==x?'sel':''}" onclick="S.t.m=${x};render()">× ${x}/${x}</button>`).join('')}</div><div class=two>${bar(2,1)}${bar(2*m,m)}</div><p class=big>${fr(1,2)} × ${fr(m,m)} = ${fr(m,2*m)}</p><button class="btn alt" onclick="S.t.w=!S.t.w;render()">Kenapa dikali angka yang sama?</button>`+(S.t.w?`<p class="fb g">Setiap potongan dibelah jadi ${m} bagian sama besar. Bagian yang diarsir dan seluruh bagian sama-sama jadi ${m} kali lebih banyak, jadi luasnya tetap.</p>`:'')+`<h3>Detektif: siapa yang keliru?</h3><p>Dodi berkata: "1/2 = 3/4, karena tinggal tambah 2 di atas dan di bawah."</p><div class=two>${bar(2,1)}${bar(4,3)}</div>`+opts('d',['Dodi benar','Dodi salah'],1,['Bandingkan luas arsirannya.','Menambah tidak menjaga luas. Yang benar: dikali atau dibagi bilangan yang sama.'])},
+()=>{const n=S.t.n4||4;return say('Pak Rico memotong 3/4 pita untuk hiasan kue. Ubah jumlah bagian pita dan lihat bagian yang diambil.')+`<div class=row>${[4,8,12].map(x=>`<button class="btn chip ${n==x?'sel':''}" onclick="S.t.n4=${x};render()">${x} bagian</button>`).join('')}</div>`+bar(n,n*3/4,{p:1})+`<p class=big>${fr(3,4)} = ${fr(n*3/4,n)}</p><p>Kalau pita dibagi 12 bagian, berapa bagian yang diambil untuk 3/4 pita?</p>`+opts('p',['6','8','9'],2,['Pilih 12 bagian di atas dan hitung yang diarsir.','12 ÷ 4 = 3, lalu 3 × 3 = 9 bagian.'])},
+()=>say('Saatnya merenung. Bandingkan dengan tebakanmu di awal!')+`<p class=big>Tebakanmu: ${S.guess||'?'} potong. Jawaban: <b>2 potong</b> (${fr(1,2)} = ${fr(2,4)}).</p><p>Lengkapi: pecahan 1/2 dan 2/4 senilai karena ...</p>`+opts('r',['pembilang dan penyebutnya sama-sama dikali 2, luas arsirannya tetap','angkanya sama-sama genap','penyebutnya lebih besar'],0,['Ingat gambar loyang tadi.','Luas yang diarsir tidak berubah walau potongannya lebih banyak.'])+`<p>Seberapa paham kamu?</p><div class=row>${['😄 Paham','🙂 Lumayan','😕 Belum'].map((t,i)=>`<button class="btn chip ${S.t.e==i?'sel':''}" onclick="pick('e',${i})">${t}</button>`).join('')}</div>`+(S.t.e==null?'':`<p class="fb g">${S.t.e==2?'Tidak apa-apa! Ulangi Tahap 2 dan 3 bersama temanmu.':'Bagus! Jelaskan pada temanmu dengan gambar.'}</p>`)+'<p>Diskusi kelas: di mana lagi kamu menemukan pecahan senilai?</p>',
+()=>say('Terakhir, susun kesimpulanmu!')+'<p>Pecahan adalah bagian dari benda utuh yang dibagi menjadi bagian yang ...</p>'+opts('k1',['sama besar','berbeda-beda'],0,['Ingat: bagian harus sama besar.','Bagian yang sama besar membuat pecahan bisa dibandingkan.'])+'<p>Pecahan senilai memiliki ... yang sama walaupun pembilang dan penyebutnya berbeda.</p>'+opts('k2',['nilai (luas arsiran)','jumlah potongan'],0,['Yang tetap sama adalah luas yang diarsir.','Nilainya sama, hanya potongannya berbeda.'])+(S.t.k1==0&&S.t.k2==0?KART:'')
+];
+function learn(){const i=S.st,last=i==6,c=!last||(S.t.k1==0&&S.t.k2==0);return `<div class=row>${TT.map((t,j)=>`<button class="btn chip ${j==i?'sel':''}" onclick="go('learn',${j})">${j==6?'Kartu':'Tahap '+j}</button>`).join('')}</div><h2>${TT[i]}</h2>${i==2||i==3?`<div><button class=btn onclick="vOpen(${i-1})">▶ Tonton video penjelasan</button></div>`:''}`+L[i]()+`<details><summary>Catatan guru</summary><p>${TN[i]}</p></details><div class=nav>${i?`<button class="btn alt" onclick="go('learn',${i-1})">Kembali</button>`:'<span></span>'}<button class=btn onclick="${last?`S.ok.learn=1;go('home')`:`go('learn',${i+1})`}">${last?'Selesai belajar':'Lanjut'}</button></div>`}
+const R=[[1,2,8],[1,3,6],[3,4,12]],SY=[[1,2],[2,3],[3,4],[1,3]],PI=[[6,3],[6,4],[8,6],[9,3]],ORD=[2,0,3,1];
+const fin=()=>{if(S.pd.k&&S.pd.t)S.ok.play=1};
+function startK(){S.g='k';S.k={r:0,sel:[],w:0,ok:0};render()}
+function kt(i){const s=S.k.sel,j=s.indexOf(i);j<0?s.push(i):s.splice(j,1);render()}
+function chk(){const[a,b,n]=R[S.k.r];if(S.k.sel.length==a*n/b)S.k.ok=1;else S.k.w++;render()}
+function nk(){if(S.k.r==2){S.pd.k=1;fin();S.g=null}else{S.k.r++;S.k.sel=[];S.k.w=0;S.k.ok=0}render()}
+function knife(){const[a,b,n]=R[S.k.r],K=S.k,m=n/b;return say(`Ronde ${K.r+1} dari 3. Sentuh potongan untuk mengarsir supaya senilai dengan ${a}/${b}.`)+`<p class=big>${fr(a,b)} = ${fr('?',n)}</p>`+(K.w>=1?`<p>Petunjuk: bandingkan dengan gambar ${a}/${b} ini.</p>${bar(b,a)}`:'')+(K.w>=2?`<p class="fb b">${n} ÷ ${b} = ${m}, lalu ${a} × ${m} = ${a*m} bagian diarsir.</p>`:'')+bar(n,0,{sel:K.sel,tap:'kt'})+(K.ok?`<p class="fb g">✅ Benar! ${a*m} dari ${n} bagian.</p><button class=btn onclick="nk()">${K.r==2?'Selesai':'Ronde berikutnya'}</button>`:`<button class=btn onclick="chk()">Periksa</button>`+(K.w?'<p class="fb b">❌ Belum senilai. Coba lagi!</p>':''))}
+function startT(){S.g='t';S.tw={sy:null,done:[],w:0,m:'Pilih satu kartu pecahan, lalu gambar pasangannya.'};render()}
+function ts(i){S.tw.sy=i;render()}
+function tp(i){const T=S.tw;if(T.sy==null)T.m='Pilih kartu pecahan dulu.';else if(T.sy==i){T.done.push(i);T.sy=null;T.w=0;T.m='✅ Cocok! Luas arsirannya sama.';if(T.done.length==4){S.pd.t=1;fin();T.m='🎉 Semua pasangan ditemukan!'}}else{T.w++;T.m='❌ Belum senilai.'+(T.w%2?'\u200b':'')}render()}
+function twin(){const T=S.tw,d=i=>T.done.includes(i);return say(T.m)+`<div class=row>${SY.map((s,i)=>`<button class="btn chip ${d(i)?'good':T.sy==i?'sel':''}" ${d(i)?'disabled':''} onclick="ts(${i})">${fr(...s)}</button>`).join('')}</div><div class=grid4>${ORD.map(i=>`<button class="pic ${d(i)?'good':''}" ${d(i)?'disabled':''} onclick="tp(${i})">${bar(...PI[i])}</button>`).join('')}</div>`+(T.w&&T.sy!=null?`<p>Petunjuk: ini gambar ${SY[T.sy][0]}/${SY[T.sy][1]}. Cari gambar dengan luas arsir yang sama.</p>${bar(SY[T.sy][1],SY[T.sy][0])}`:'')+(T.done.length==4?`<button class=btn onclick="S.g=null;render()">Kembali ke menu</button>`:'')}
+const VP=[
+{v:bar(4,2),p:'Pecahan mana yang senilai dengan gambar ini?',o:['1/2','2/3','3/4'],a:0},
+{v:bar(6,4),p:'Pecahan mana yang senilai dengan gambar ini?',o:['2/3','3/4','4/8'],a:0},
+{v:bar(8,2),p:'Pecahan mana yang senilai dengan gambar ini?',o:['1/4','1/2','2/3'],a:0},
+{v:bar(9,6),p:'Pecahan mana yang senilai dengan gambar ini?',o:['2/3','3/5','6/8'],a:0},
+{p:'3/4 = ?/12',o:['6','8','9'],a:2},
+{p:'2/5 = 4/?',o:['8','10','12'],a:1},
+{p:'Mana yang senilai dengan 1/3?',o:['2/6','2/5','3/5'],a:0},
+{p:'Kue dipotong 10 bagian, diambil 5. Pecahan paling sederhana?',o:['1/2','1/5','5/2'],a:0},
+{p:'Mana yang BUKAN senilai dengan 3/6?',o:['1/2','4/8','2/5'],a:2},
+{p:'Dodi berkata 1/2 = 2/3. Bagaimana kata Pak Rico?',o:['Salah','Benar'],a:0}];
+function startV(){const q=VP.map(x=>({...x})).sort(()=>Math.random()-.5).slice(0,8).map(x=>{const c=x.o[x.a],o=[...x.o].sort(()=>Math.random()-.5);return{...x,o,a:o.indexOf(c)}});S.g='v';S.tm={r:0,q,sa:0,sb:0,lk:{A:0,B:0},pk:{},d:0,m:'',w:null,over:0};render()}
+function vp(t,i){const M=S.tm,q=M.q[M.r];if(M.over||M.d||M.lk[t])return;M.pk[t]=i;S.nf=1;const o=t=='A'?'B':'A';if(i==q.a){M.d=1;M.w=t;M['s'+t.toLowerCase()]++;M.m='🎉 Tim '+t+' mendapat 1 poin!';render();sfx('ok');confetti()}else{M.lk[t]=1;if(M.lk[o]){M.d=1;M.m='Kedua tim salah. Jawaban yang benar: '+q.o[q.a]}else M.m='Tim '+t+' salah. Tim '+o+' boleh menjawab!';render();sfx('no')}}
+function vn(){const M=S.tm;S.nf=1;if(M.r==M.q.length-1){M.over=1;render();sfx('win');confetti()}else{M.r++;M.lk={A:0,B:0};M.pk={};M.d=0;M.m='';M.w=null;render();sfx('nav')}}
+function versus(){const M=S.tm;if(M.over){const w=M.sa>M.sb?'Tim A menang! 🏆':M.sb>M.sa?'Tim B menang! 🏆':'Skor seri! 🤝';return `<h2>${w}</h2><p class=big>Tim A: ${M.sa} poin | Tim B: ${M.sb} poin</p><button class=btn onclick="startV()">Main lagi</button><button class="btn alt" onclick="S.g=null;render()">Kembali ke menu</button>`}
+const q=M.q[M.r],panel=(t,c,sc)=>`<div class="team ${c}"><h3>Tim ${t}</h3><div class=score>${sc}</div><div class=col>${q.o.map((x,i)=>`<button class="btn chip ${M.d?(i==q.a?'good':M.pk[t]==i?'bad':''):(M.pk[t]==i?'bad':'')}" ${M.lk[t]||M.d?'disabled':''} onpointerdown="vp('${t}',${i})">${x}</button>`).join('')}</div>${M.lk[t]&&!M.d?'<p>Menunggu tim lain...</p>':''}</div>`;
+return `<h2>Adu Cepat: Tim A lawan Tim B</h2><p>Soal ${M.r+1} dari ${M.q.length}. Tim yang lebih dulu menyentuh jawaban benar mendapat 1 poin. Jawaban salah berarti menunggu.</p><div class=arena>${panel('A','tA',M.sa)}<div class=mid>${q.v||''}<p class=big>${q.p}</p>${M.m?`<p class="fb ${M.w?'g':'b'}">${M.m}</p>`:''}${M.d?`<button class=btn onclick="vn()">${M.r==M.q.length-1?'Lihat pemenang':'Soal berikutnya'}</button>`:''}</div>${panel('B','tB',M.sb)}</div><button class="btn alt" onclick="S.g=null;render()">Keluar</button>`}
+function sfx2(k){if(['ok','no','win','nav'].includes(k))return sfx(k);if(!A.s||!ac())return;const t=ctx.currentTime;if(k=='car'){tone(120,t,.35,'sawtooth',.08,260);tone(660,t+.36,.12,'square',.07);tone(660,t+.5,.12,'square',.07)}else if(k=='turbo')[440,660,880,1320].forEach((f,i)=>tone(f,t+i*.06,.15,'square',.08));else if(k=='flat')tone(300,t,.5,'sawtooth',.09,80);else tone(500,t,.4,'triangle',.1,200)}
+function mkq(n){return VP.map(x=>({...x})).sort(()=>Math.random()-.5).slice(0,n).map(x=>{const c=x.o[x.a],o=[...x.o].sort(()=>Math.random()-.5);return{...x,o,a:o.indexOf(c)}})}
+function startR(){const bx={},T=['turbo','flat','drop'];[2,3,4,5,6,7,8].sort(()=>Math.random()-.5).slice(0,3).forEach((c,i)=>bx[c]=T[i]);S.g='r';S.rc={r:0,q:mkq(10),pos:{A:0,B:0},skip:{A:0,B:0},bx,used:{},pk:{},ord:[],d:0,m:'',w:null,over:0,fin:0,snd:[]};render()}
+function rres(){const R=S.rc,q=R.q[R.r],was={...R.skip},ms=[];R.skip={A:0,B:0};R.snd=[];const ok=R.ord.filter(t=>R.pk[t]==q.a);
+['A','B'].forEach(t=>{if(was[t])ms.push('Tim '+t+' ban kempes, ronde ini diam.');else if(R.pk[t]!=q.a)ms.push('Tim '+t+' salah, mobil mogok.')});
+if(!ok.length)R.snd.push('no');
+ok.forEach((t,i)=>{const n=i?1:2;let c=Math.min(10,R.pos[t]+n);ms.push('Tim '+t+' benar: maju '+n+' petak.');R.snd.push('car');const e=R.bx[c];if(e&&!R.used[t+c]){R.used[t+c]=1;if(e=='turbo'){c=Math.min(10,c+2);ms.push('🚀 Turbo! Tim '+t+' maju 2 petak lagi.');R.snd.push('turbo')}else if(e=='flat'){R.skip[t]=1;ms.push('🛞 Ban kempes! Tim '+t+' diam di ronde berikutnya.');R.snd.push('flat')}else{c=Math.max(0,c-1);ms.push('🍰 Kue jatuh! Tim '+t+' mundur 1 petak.');R.snd.push('drop')}}R.pos[t]=c});
+R.d=1;R.m=ms.join(' ');R.w=ok.length?ok[0]:null;const fa=R.pos.A>=10,fb=R.pos.B>=10;
+if(fa||fb||R.r==R.q.length-1){R.fin=1;R.win=fa&&fb?(ok[0]||'A'):fa?'A':fb?'B':R.pos.A>R.pos.B?'A':R.pos.B>R.pos.A?'B':null}}
+function rp(t,i){const R=S.rc;if(R.over||R.d||R.pk[t]!=null||R.skip[t])return;R.pk[t]=i;R.ord.push(t);S.nf=1;R.snd=[];if(['A','B'].filter(x=>!R.skip[x]).every(x=>R.pk[x]!=null))rres();render();R.snd.forEach((k,j)=>setTimeout(()=>sfx2(k),j*400))}
+function rn(){const R=S.rc;S.nf=1;if(R.fin){R.over=1;render();sfx('win');confetti();return}R.r++;R.pk={};R.ord=[];R.d=0;R.m='';R.w=null;if(R.skip.A&&R.skip.B)R.skip={A:0,B:0};render();sfx('nav')}
+const lanes=R=>['A','B'].map(t=>`<div class=lane><b>Tim ${t}</b><div class=track>${Array.from({length:11},(_,i)=>{const e=R.bx[i],u=R.used[t+i];return `<i class="${i==10?'fin':''}">${R.pos[t]==i?(t=='A'?'🚗':'🛵'):i==10?'🏪':i==0?'🚦':e?(u?({turbo:'🚀',flat:'🛞',drop:'🍰'})[e]:'❓'):''}</i>`}).join('')}</div></div>`).join('');
+function race(){const R=S.rc;if(R.over){const w=R.win?`Tim ${R.win} menang! 🏆`:'Balapan seri! 🤝';return `<h2>${w}</h2>${lanes(R)}<button class=btn onclick="startR()">Balap lagi</button><button class="btn alt" onclick="S.g=null;render()">Kembali ke menu</button>`}
+const q=R.q[R.r],panel=(t,c)=>{const sk=R.skip[t],an=R.pk[t]!=null;return `<div class="team ${c}"><h3>Tim ${t}</h3><div class=col>${q.o.map((x,i)=>`<button class="btn chip ${R.d?(i==q.a?'good':R.pk[t]==i?'bad':''):''}" ${sk||an||R.d?'disabled':''} onpointerdown="rp('${t}',${i})">${x}</button>`).join('')}</div>${sk&&!R.d?'<p>🛞 Ban kempes! Tim ini diam dulu.</p>':an&&!R.d?'<p>✅ Sudah menjawab. Menunggu tim lain...</p>':''}</div>`};
+return `<h2>Balap Kue ke Toko</h2>${lanes(R)}<p>Soal ${R.r+1} dari ${R.q.length}. Benar dan tercepat: maju 2 petak. Benar tapi kedua: maju 1 petak. Awas kotak ❓!</p><div class=arena>${panel('A','tA')}<div class=mid>${q.v||''}<p class=big>${q.p}</p>${R.m?`<p class="fb ${R.w?'g':'b'}">${R.m}</p>`:''}${R.d?`<button class=btn onclick="rn()">${R.fin?'Lihat pemenang':'Soal berikutnya'}</button>`:''}</div>${panel('B','tB')}</div><button class="btn alt" onclick="S.g=null;render()">Keluar</button>`}
+const OR=[[1,2,8],[3,4,8],[2,3,9],[5,6,12],[2,5,10],[3,8,16]];
+function startO(){S.g='o';S.pq={r:0,sel:{A:[],B:[]},done:{A:0,B:0},lock:{A:0,B:0},w:{A:0,B:0},pt:{A:0,B:0},ord:[],d:0,m:'',over:0};render()}
+function ptg(t,i){const P=S.pq;if(P.d||P.done[t]||P.lock[t])return;const s=P.sel[t],j=s.indexOf(i);j<0?s.push(i):s.splice(j,1);render()}
+const pa=i=>ptg('A',i),pb=i=>ptg('B',i);
+function pend(){const P=S.pq,[a,b,n]=OR[P.r],m=n/b;P.d=1;P.m=`Pak Rico: ${n} ÷ ${b} = ${m}, lalu ${a} × ${m} = ${a*m} potong yang diarsir.`}
+function pf(t){const P=S.pq,[a,b,n]=OR[P.r];if(P.d||P.done[t]||P.lock[t])return;S.nf=1;if(P.sel[t].length==a*n/b){P.done[t]=1;P.ord.push(t);P.pt[t]+=P.ord.length==1?3:1;if(P.done.A&&P.done.B)pend();render();sfx('ok');if(P.ord.length==1)confetti()}else{P.w[t]++;P.lock[t]=1;render();sfx('no');setTimeout(()=>{P.lock[t]=0;render()},3000)}}
+function pn(){const P=S.pq;S.nf=1;if(P.r==OR.length-1){P.over=1;render();sfx('win');confetti()}else{P.r++;P.sel={A:[],B:[]};P.done={A:0,B:0};P.lock={A:0,B:0};P.w={A:0,B:0};P.ord=[];P.d=0;P.m='';render();sfx('nav')}}
+function order(){const P=S.pq;if(P.over){const w=P.pt.A>P.pt.B?'Tim A menang! 🏆':P.pt.B>P.pt.A?'Tim B menang! 🏆':'Skor seri! 🤝';return `<h2>${w}</h2><p class=big>Tim A: ${P.pt.A} poin | Tim B: ${P.pt.B} poin</p><button class=btn onclick="startO()">Main lagi</button><button class="btn alt" onclick="S.g=null;render()">Kembali ke menu</button>`}
+const[a,b,n]=OR[P.r],panel=(t,c)=>`<div class="team ${c}"><h3>Tim ${t}</h3><div class=score>${P.pt[t]}</div>${bar(n,0,{sel:P.sel[t],tap:t=='A'?'pa':'pb'})}${P.done[t]?'<p>✅ Selesai!</p>':`<button class=btn ${P.lock[t]||P.d?'disabled':''} onpointerdown="pf('${t}')">${P.lock[t]?'Tunggu 3 detik...':P.d?'Waktu habis':'Selesai!'}</button>`}${P.w[t]&&!P.done[t]?`<p>Petunjuk: pesanannya seperti gambar ini</p>${bar(b,a)}`:''}</div>`;
+return `<h2>Pesanan Kilat Warung Pak Rico</h2><p>Pesanan ${P.r+1} dari ${OR.length}. Arsir loyang sampai senilai pesanan, lalu tekan Selesai! Tercepat 3 poin, kedua 1 poin.</p><div class=arena>${panel('A','tA')}<div class=mid><p class=big>Pak Rico butuh ${fr(a,b)} loyang martabak!</p><p>Loyang kalian terpotong ${n} bagian.</p>${P.m?`<p class="fb g">${P.m}</p>`:''}${P.d?`<button class=btn onclick="pn()">${P.r==OR.length-1?'Lihat pemenang':'Pesanan berikutnya'}</button>`:P.ord.length?`<button class="btn alt" onclick="pend();render()">Akhiri ronde</button>`:''}</div>${panel('B','tB')}</div><button class="btn alt" onclick="S.g=null;render()">Keluar</button>`}
+function play(){if(S.g=='k')return knife();if(S.g=='t')return twin();if(S.g=='v')return versus();if(S.g=='r')return race();if(S.g=='o')return order();return say('Pilih permainan yang kamu suka!')+`<div class=two><button class="btn card2" onclick="startK()">🔪 Pisau Ajaib ${S.pd.k?'✅':''}</button><button class="btn card2" onclick="startT()">🃏 Kembar Pecahan ${S.pd.t?'✅':''}</button></div><button class="btn card2" style="width:100%" onclick="startV()">⚔️ Adu Cepat: Tim A lawan Tim B</button><button class="btn card2" style="width:100%" onclick="startR()">🚗 Balap Kue ke Toko</button><button class="btn card2" style="width:100%" onclick="startO()">🥞 Pesanan Kilat Warung Pak Rico</button><p>Game kelompok dimainkan bersama di depan layar untuk seru-seruan bersama teman.</p>`+`<button class=btn onclick="startQ()">Lanjut ke Uji Kemampuan</button>`}
+const Q=[
+{p:'Pecahan mana yang senilai dengan 2/3?',v:bar(3,2),o:['4/6','3/5','2/6'],a:0,s:'u',e:'2/3 = 4/6, karena pembilang dan penyebut sama-sama dikali 2.'},
+{p:'Gambar ini menunjukkan 6/8. Pecahan mana yang senilai?',v:bar(8,6),o:['3/4','6/10','2/3'],a:0,s:'u',e:'6/8 = 3/4, karena pembilang dan penyebut sama-sama dibagi 2.'},
+{p:'Pak Rico memotong kue jadi 12 bagian dan mengambil 9 bagian. Apa pecahan paling sederhananya?',o:['3/4','1/4','9/10'],a:0,s:'a',e:'9 ÷ 3 = 3 dan 12 ÷ 3 = 4, jadi 3/4.'},
+{p:'Pita 2/5 bagian akan dibagi jadi 10 bagian sama panjang. Berapa bagian yang diambil?',v:bar(5,2,{p:1}),o:['4','5','7'],a:0,s:'a',e:'2/5 = 4/10, karena dikali 2.'},
+{p:'Dodi berkata 3/5 = 6/8. Bagaimana pendapatmu?',o:['Tidak setuju: 3/5 = 6/10, karena pembilang dan penyebut sama-sama dikali 2','Setuju: pembilangnya dikali 2','Setuju: selisih 5−3 dan 8−6 sama'],a:0,s:'n',e:'Kedua angka harus dikali bilangan yang sama. Dodi hanya mengubah penyebut dengan cara berbeda.'}];
+function startQ(){S.qi=0;S.qa=[];go('quiz')}
+function qp(i){if(S.qa[S.qi]==null){S.qa[S.qi]=i;S.nf=1;render();const f=document.querySelector('.fb');if(f)vsay(f.textContent);if(i==Q[S.qi].a){sfx('ok');confetti()}else sfx('no')}}
+function qn(){if(S.qi==4){S.ok.quiz=1;go('result')}else{S.qi++;render()}}
+function quiz(){const q=Q[S.qi],a=S.qa[S.qi];return `<p>Soal ${S.qi+1} dari 5</p>`+say(q.p)+(q.v||'')+`<div class=col>${q.o.map((t,i)=>`<button class="btn chip ${a==null?'':i==q.a?'good':a==i?'bad':''}" onclick="qp(${i})">${t}</button>`).join('')}</div>`+(a==null?'':`<p class="fb ${a==q.a?'g':'b'}">${a==q.a?'✅ Benar! ':'❌ Belum tepat. '}${q.e}</p><button class=btn onclick="qn()">${S.qi==4?'Lihat hasil':'Lanjut'}</button>`)}
+function result(){if(!S.ok.quiz)return say('Kamu belum mengerjakan Uji Kemampuan, jadi hasilnya belum ada.')+'<button class=btn onclick="startQ()">Kerjakan Uji Kemampuan</button>';const sc={u:0,a:0,n:0};Q.forEach((q,i)=>{if(S.qa[i]==q.a)sc[q.s]++});const tot=sc.u+sc.a+sc.n,st=tot>=5?3:tot>=3?2:1;return say(tot>=4?'Hebat! Kamu jago pecahan senilai!':'Kamu sudah berusaha. Yuk ulangi bagian yang masih sulit!')+`<p class=stars>${'⭐'.repeat(st)}</p><p class=big>Skor ${tot} dari 5</p>`+[['u','Memahami',2,2],['a','Mengaplikasi',2,4],['n','Bernalar',1,5]].map(([k,l,mx,ts])=>`<div class=meter><span>${l}: ${sc[k]} dari ${mx}</span><div class=mbar><i style="width:${sc[k]/mx*100}%"></i></div>${sc[k]<mx?`<button class="btn alt" onclick="go('learn',${ts})">Ulangi Tahap ${ts}</button>`:''}</div>`).join('')+`<button class=btn onclick="startQ()">Coba lagi</button>`}
+function card(){return say('Ini kartu kesimpulanmu. Simpan di ingatanmu ya!')+KART}
+function home(){const P=[['learn','📖','Belajar',1,"go('learn')"],['video','🎬','Video Penjelasan',1,"go('video')"],['play','🎮','Main',1,"go('play')"],['quiz','📝','Uji Kemampuan',1,"startQ()"],['result','⭐','Hasil',1,"go('result')"]];return say('Selamat datang di warung Pak Rico! Pilih menu mana saja yang kamu mau!')+`<div class=map>${P.map(p=>`<button class="btn pos" ${p[3]?'':'disabled'} onclick="${p[4]}">${p[1]} ${p[2]} ${S.ok[p[0]]?'✅':p[3]?'':'🔒'}</button>`).join('')}</div>`+(S.ok.learn?`<button class="btn alt" onclick="go('card')">Lihat Kartu Kesimpulan</button>`:'')}
+const B=h=>`<div class=vbig>${h}</div>`,SM=h=>`<p class=vsm>${h}</p>`;
+const VID={1:{t:'Kenapa 1/2 sama dengan 2/4?',sc:[
+{d:5,t:'Halo! Di warung Pak Rico ada satu loyang martabak yang besar.',f:p=>B('🥞 Satu loyang martabak')+bar(1,0)},
+{d:6,t:'Loyang dibelah jadi 2 bagian sama besar. Satu bagian diambil. Itu 1/2.',f:p=>B('Dibelah jadi 2 bagian sama besar')+bar(p<.3?1:2,p<.6?0:1)+(p>.6?B(fr(1,2)):'')},
+{d:7,t:'Sekarang setiap potongan dibelah lagi jadi dua. Loyang menjadi 4 potong.',f:p=>B('Setiap potongan dibelah lagi '+(p>.3&&p<.65?'✂️':''))+bar(p<.5?2:4,p<.5?1:2)+B(p<.5?fr(1,2):fr(2,4))},
+{d:7,t:'Potongan jadi lebih banyak, tetapi luas yang diarsir tetap sama. Sekarang 2 dari 4 potong.',f:p=>bar(2,1)+bar(4,2)+(p>.4?B(fr(1,2)+' = '+fr(2,4)):'')+SM('Luas arsirannya sama!')},
+{d:6,t:'Jadi 1/2 dan 2/4 bernilai sama. Itulah pecahan senilai!',f:p=>B('⭐ '+fr(1,2)+' = '+fr(2,4)+' ⭐')+B('Pecahan senilai!')+bar(2,1)+bar(4,2)}]},
+2:{t:'Cara mencari pecahan senilai',sc:[
+{d:5,t:'Bagaimana mencari pecahan senilai 2/3? Kita kalikan pembilang dan penyebut dengan bilangan yang sama.',f:p=>B('Mencari pecahan senilai '+fr(2,3))+bar(3,2)},
+{d:7,t:'Kalikan dengan 2. Pembilang 2 kali 2 sama dengan 4. Penyebut 3 kali 2 sama dengan 6.',f:p=>B(fr(2,3)+' × '+fr(2,2)+(p>.5?' = '+fr(4,6):''))+(p>.3?bar(6,4):bar(3,2))+(p>.5?SM('2 × 2 = 4 dan 3 × 2 = 6'):'')},
+{d:6,t:'Lihat gambarnya! Luas yang diarsir sama, hanya potongannya lebih banyak.',f:p=>bar(3,2)+bar(6,4)+B(fr(2,3)+' = '+fr(4,6))+SM('Sama luas!')},
+{d:7,t:'Bisa juga dibagi. 6/8 dibagi 2 menjadi 3/4.',f:p=>B(fr(6,8)+' ÷ '+fr(2,2)+(p>.5?' = '+fr(3,4):''))+bar(8,6)+(p>.5?bar(4,3):'')},
+{d:7,t:'Ingat! Kalikan atau bagi dengan bilangan yang sama. Jangan ditambah.',f:p=>B('⚠️ Jangan ditambah!')+B(fr(1,2)+' ≠ '+fr(3,4))+bar(2,1)+bar(4,3)+SM('Luasnya berbeda')}]}};
+let Z={open:0,on:0,t:0,si:-1,end:0,sp:0,iv:0,last:0,id:1};
+const hasId=()=>{try{return 'speechSynthesis' in window&&speechSynthesis.getVoices().some(v=>/^id/i.test(v.lang))}catch(e){return false}};
+try{speechSynthesis.getVoices()}catch(e){}
+const vEnds=()=>{let a=0;return VID[Z.id].sc.map(c=>a+=c.d)};
+function speak(t){Z.speaking=0;if(!Z.sp||!Z.on)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='id-ID';u.rate=.9;const v=speechSynthesis.getVoices().find(v=>/^id/i.test(v.lang));if(v)u.voice=v;Z.u=u;Z.speaking=1;Z.spStart=performance.now();Z.spMax=(t.length*.13+3)*1000;u.onend=u.onerror=()=>{if(Z.u===u)Z.speaking=0};speechSynthesis.speak(u)}catch(e){Z.speaking=0}}
+function vOpen(id){Z.id=id;Z.open=1;try{speechSynthesis.cancel()}catch(e){}Z.sp=hasId();stopM();const d=$('#vid');d.hidden=false;d.innerHTML=`<div class=vbox><div class=vtop><b>🎬 ${VID[id].t}</b><button class="btn alt" onclick="vClose()">✖ Tutup</button></div><div id=vst class=vstage></div><div id=vsub>${say('')}</div><div class=vpg><i id=vpg></i></div><div class=row><button id=vpp class=btn onclick="vTog()">⏸ Jeda</button><button class="btn alt" onclick="vRe()">🔁 Ulangi</button>${Z.sp?`<button id=vsp class="btn alt" onclick="vSp()">🗣️ Narasi: nyala</button>`:''}</div></div>`;vRe()}
+function vRe(){Z.t=0;Z.si=-1;Z.end=0;Z.on=1;$('#vpp').textContent='⏸ Jeda';clearInterval(Z.iv);Z.last=performance.now();Z.iv=setInterval(()=>{const n=performance.now();if(Z.on){let nt=Z.t+(n-Z.last)/1000;if(Z.speaking&&n-Z.spStart>Z.spMax)Z.speaking=0;if(Z.sp&&Z.speaking&&Z.si>=0){const e=vEnds()[Z.si];if(nt>=e)nt=e-.001}Z.t=nt}else Z.spStart+=n-Z.last;Z.last=n;vTick()},60);vTick()}
+function vTick(){const sc=VID[Z.id].sc,tot=sc.reduce((a,c)=>a+c.d,0);let t=Math.min(Z.t,tot),i=0;while(i<sc.length-1&&t>=sc[i].d){t-=sc[i].d;i++}const c=sc[i],p=Math.min(1,t/c.d);$('#vst').innerHTML=c.f(p);const n=Math.ceil(c.t.length*Math.min(1,p*2.2));$('#vsub p').textContent=c.t.slice(0,n);$('#vpg').style.width=(Math.min(Z.t,tot)/tot*100)+'%';
+if(i!=Z.si){Z.si=i;if(Z.on)sfx('nav');speak(c.t)}
+if(Z.t>=tot&&!Z.end){Z.end=1;Z.on=0;$('#vpp').textContent='🔁 Putar lagi';sfx('win')}}
+function vTog(){if(Z.end){vRe();return}Z.on=!Z.on;$('#vpp').textContent=Z.on?'⏸ Jeda':'▶ Lanjut';try{Z.on?speechSynthesis.resume():speechSynthesis.pause()}catch(e){}}
+function vSp(){Z.sp=!Z.sp;$('#vsp').textContent='🗣️ Narasi: '+(Z.sp?'nyala':'mati');if(!Z.sp){try{speechSynthesis.cancel()}catch(e){}Z.speaking=0}else if(Z.si>=0&&!Z.end)speak(VID[Z.id].sc[Z.si].t)}
+function vClose(){clearInterval(Z.iv);Z.open=0;Z.on=0;try{speechSynthesis.cancel()}catch(e){}$('#vid').hidden=true;$('#vid').innerHTML='';if(A.m)startM()}
+document.addEventListener('keydown',e=>{if(e.key=='Escape'&&Z.open)vClose()});
+const cl=t=>t.replace(/<[^>]*>/g,' ').replace(/(\d+)\/(\d+)/g,'$1 per $2').replace(/×/g,' dikali ').replace(/÷/g,' dibagi ').replace(/≠/g,' tidak sama dengan ').replace(/=/g,' sama dengan ').replace(/−/g,' kurang ').replace(/\.\.\./g,' titik titik ').replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u2B50\uFE0F\u200b]/gu,'').replace(/:/g,',').replace(/\s+/g,' ').trim();
+function vsay(t){if(!A.v||Z.open||!t)return;try{const x=cl(t);if(!x)return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(x);u.lang='id-ID';u.rate=.9;u.pitch=.85;const vs=speechSynthesis.getVoices().filter(v=>/^id/i.test(v.lang)),v=vs.find(v=>/andika|male|pria|rizki|dimas/i.test(v.name))||vs[0];if(v)u.voice=v;speechSynthesis.speak(u)}catch(e){}}
+function spk(el){const w=A.v;A.v=1;vsay(decodeURIComponent(el.dataset.t));A.v=w}
+function tgV(){A.v=!A.v;if(!A.v)try{speechSynthesis.cancel()}catch(e){}render()}
+let LKA='';
+function auto(){const k=S.scr=='learn'?'l'+S.st:S.scr=='quiz'?'q'+S.qi:'';if(k==LKA)return;LKA=k;if(!k||Z.open||!A.v)return;vsay(k[0]=='l'?TT[S.st]+'. '+LS:LS)}
+try{speechSynthesis.onvoiceschanged=()=>{if(!Z.open)render()}}catch(e){}
+function video(){return say('Mau nonton video penjelasan? Pilih ya!')+`<div class=two><button class="btn card2" onclick="vOpen(1)">🎬 Kenapa 1/2 = 2/4?</button><button class="btn card2" onclick="vOpen(2)">🎬 Cara mencari pecahan senilai</button></div>`}
+const V={home,learn,play,quiz,result,card,video};
+function render(){$('#app').innerHTML=`<div class=deco aria-hidden=true><span style="left:2%;bottom:4%">🍰</span><span style="right:2%;bottom:6%;animation-delay:.6s">🧁</span><span style="right:3%;top:22%;animation-delay:1.2s">🍩</span><span style="left:2%;top:30%;animation-delay:.3s">🍪</span></div><header><h1>🍰 Warung Kue Pak Rico</h1><div>${S.scr=='home'?'':`<button class="btn alt" onclick="go('home')">🗺️ Peta</button>`}<button class="btn alt" onclick="tgM()">${A.m?'🎵 Musik':'🔇 Musik'}</button><button class="btn alt" onclick="tgS()">${A.s?'🔊 Suara':'🔈 Suara'}</button>${hasId()?`<button class="btn alt" onclick="tgV()">${A.v?'🗣️ Pak Rico':'🤐 Pak Rico'}</button>`:''}</div></header><main>${V[S.scr]()}</main>`;fx();auto()}
+render();
+</script></body></html>
